@@ -1,0 +1,158 @@
+<table class="table">
+    <thead>
+        <tr>
+        <br>
+            <th scope="col">RoomId</th><br>
+            <th scope="col">Roomprice</th><br>
+            <th scope="col">Onedayprice</th><br>
+            <th scope="col">Onenightprice</th><br>
+
+        </tr>
+
+    </thead>
+
+      <tbody>
+        <tr *ngFor="let rate of  setratesList ">  
+               <td>{{rate.totalcost}}</td>                 
+               <td>{{rate.roomId}}</td> 
+                <td>{{rate.dayprice}}</td> 
+                <td>{{rate.onenightprice}}</td> 
+         
+                 
+             <button type="button" class="btn btn-primary" (click)="delete(setrates.Id)">delete</button>
+             <button type="button" class="btn btn-primary">update</button>
+            
+        </tr>
+    </tbody>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    set rates
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+      
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form #myuser="ngForm" (ngSubmit)="display(myuser)" style="padding-bottom: 2em;">
+            <div class="clsform">
+              <h4 class="text-primary" style="padding-bottom: 1em;padding-top: 1em; font-size: x-large;">ADD SetRates</h4> 
+
+
+              <div class="form-group">
+
+
+                <label style="color: black;">Enter Id *</label>
+              <input  matInput #yname="ngModel" [(ngModel)]="setrates.Id" class="form-control" placeholder="123" name="yname" required  >
+              <div *ngIf="yname.invalid && (yname.touched)">
+               
+                <small *ngIf="yname.errors?.required" class="text-danger">GuesdIdCannot be null</small>
+              </div>
+              </div>
+
+
+
+              <div class="form-group">
+                
+              <label style="color: black;">Enter RoomId *</label>
+              <input  matInput #Jname="ngModel" [(ngModel)]="setrates.roomId" class="form-control" placeholder="123" name="Jname" required  >
+              <div *ngIf="Jname.invalid && (Jname.touched)">
+               
+                <small *ngIf="Jname.errors?.required" class="text-danger">RoomIdCannot be null</small>
+              </div>
+              </div>
+
+
+
+<!-- 
+              <div class="form-group">
+                  <label style="color: black;">Enter CheckIn*</label>
+                <input type="date" matinput #cost="ngModel" [(ngModel)]="setrates.Checkin" class="form-control" placeholder="yyyy-mm-dd" name="date1" required >
+                <div *ngIf="cost.invalid && (cost.touched)">
+                
+                  <small *ngIf="cost.errors?.required"class="text-danger">Cannot be null</small>
+                
+                </div>
+                </div>
+
+
+              
+<div class="form-group">
+                  <label style="color: black;">Enter CheckOut*</label>
+                <input type="date" matinput #cost="ngModel" [(ngModel)]="setrates.Checkout" class="form-control" placeholder="yyyy-mm-dd" name="date1" required >
+                <div *ngIf="cost.invalid && (cost.touched)">
+                
+                  <small *ngIf="cost.errors?.required"class="text-danger">Cannot be null</small>
+                
+                </div>
+                </div> -->
+
+              
+                
+  
+<!-- 
+              
+                <div class="form-group">
+                  <label style="color: black;">Enter Guest*</label>
+                <input  matinput #source2="ngModel" [(ngModel)]="setrates.guestName" class="form-control" placeholder="e.g: name" name="source2" required >
+                <div *ngIf="source2.invalid && (source2.touched)">
+                
+                  <small *ngIf="source2.errors?.required" class="text-danger">sourcename Cannot be null</small>
+                
+                </div>
+                </div> -->
+
+
+
+
+                <div class="form-group">
+                  <label style="color: black;">Enter RoomCost*</label>
+                <input  matinput #sourc3="ngModel" [(ngModel)]="setrates.totalcost" class="form-control" placeholder="e.g: Day" name="sourc3" required >
+                <div *ngIf="sourc3.invalid && (sourc3.touched)">
+                
+                  <small *ngIf="sourc3.errors?.required" class="text-danger">sourcename Cannot be null</small>
+                
+                </div>
+                </div>   
+  
+                <div class="form-group">
+                  <label style="color: black;">Enter OneDayPrice*</label>
+                <input  matinput #source3="ngModel" [(ngModel)]="setrates.dayprice" class="form-control" placeholder="e.g: 100RUPEES" name="source3" required >
+                <div *ngIf="source3.invalid && (source3.touched)">
+                
+                  <small *ngIf="source3.errors?.required" class="text-danger">sourcename Cannot be null</small>
+                
+                </div>
+                </div>   
+<div class="form-group">
+                  <label style="color: black;">Enter firstnightprice*</label>
+                <input  matinput #sour3="ngModel" [(ngModel)]="setrates.onenightprice" class="form-control" placeholder="e.g: 1000" name="sour3" required >
+                <div *ngIf="sour3.invalid && (sour3.touched)">
+                
+                  <small *ngIf="sour3.errors?.required" class="text-danger">sourcename Cannot be null</small>
+                
+                </div>
+                </div>   
+<div class="form-group">
+                  <label style="color: black;">Enter Extensionprice*</label>
+                <input  matinput #souce3="ngModel" [(ngModel)]="setrates.Extensionprice" class="form-control" placeholder="e.g: Extensionprice" name="souce3" required >
+                <div *ngIf="souce3.invalid && (souce3.touched)">
+                
+                  <small *ngIf="souce3.errors?.required" class="text-danger">sourcename Cannot be null</small>
+                
+                </div>
+                </div>   
+                <br>
+              <button class="btn btn-primary col-lg-12" type="submit" [disabled]="!myuser.form.valid">Add SetRates</button><br><br>
+            </div>
+           
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>

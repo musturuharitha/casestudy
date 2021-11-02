@@ -1,0 +1,138 @@
+<table class="table">
+    <thead>
+        <tr>
+          <th scope="col">RoomId</th><br>
+            <th scope="col">GuestId</th><br><br><br>
+            <th scope="col">GuestName</th><br>
+            <th scope="col">Date of Birth</th><br>
+         
+            <th scope="col">Address</th>
+        </tr>
+
+    </thead>
+    <tbody>
+        <tr *ngFor="let guest of guestList ">
+          <td>{{guest.roomId}}</td><br><br>
+            <td>{{guest.guestId}}</td><br>
+
+            <td>{{guest.guestFirstName}}</td>       
+                
+                   <td>{{guest.dateOfBirth}}</td>    
+                 
+                <td>{{guest.address}}</td>       
+            <td>  <button type="button" class="btn btn-primary" (click)="delete(guest.roomId)">delete</button></td>
+            <td> <button type="button" class="btn btn-success" >update</button></td>
+        </tr>
+    </tbody>
+
+
+</table>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Add Guest
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+      
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form #myuser="ngForm" (ngSubmit)="display(myuser)" style="padding-bottom: 2em;">
+            <div class="clsform">
+              <h4 class="text-primary" style="padding-bottom: 1em;padding-top: 1em; font-size: x-large;">ADD GUEST</h4> 
+
+              <div class="form-group">
+
+
+                <label style="color: black;">Enter Room Id *</label>
+              <input  matInput #iname="ngModel" [(ngModel)]="guest.roomId" class="form-control" placeholder="123" name="iname" required  >
+              <div *ngIf="iname.invalid && (iname.touched)">
+               
+                <small *ngIf="iname.errors?.required" class="text-danger">GuesdIdCannot be null</small>
+              </div>
+              </div>
+
+              <div class="form-group">
+
+                <label style="color: black;">Enter Guest Id *</label>
+              <input  matInput #yname="ngModel" [(ngModel)]="guest.guestId" class="form-control" placeholder="123" name="yname" required  >
+              <div *ngIf="yname.invalid && (yname.touched)">
+               
+                <small *ngIf="yname.errors?.required" class="text-danger">GuesdIdCannot be null</small>
+              </div>
+              </div>
+
+              
+                 <div class="form-group">
+                  <label style="color: black;">Enter Email Address *</label>
+                <input  matInput #uname="ngModel" [(ngModel)]="guest.email" class="form-control" placeholder="xyz@gmail.com" name="uname" required email >
+                <div *ngIf="uname.invalid && (uname.touched)">
+                  <small *ngIf="uname.errors?.email" class="text-danger">Email should be validate</small>
+                  <small *ngIf="uname.errors?.required" class="text-danger">Email Cannot be null</small>
+                
+                </div>
+              </div>
+  
+
+              <div class="form-group">
+                  <label style="color: black;">Enter FirstName*</label>
+                <input  matinput #source1="ngModel" [(ngModel)]="guest.guestFirstName" class="form-control" placeholder="e.g: John" name="source1" required >
+                <div *ngIf="source1.invalid && (source1.touched)">
+                
+                  <small *ngIf="source1.errors?.required" class="text-danger">sourcename Cannot be null</small>
+                
+                </div>
+                </div>
+  
+              <div class="form-group">
+                  <label style="color: black;">Enter LastName*</label>
+                <input  matinput #source="ngModel" [(ngModel)]="guest.guestLastName" class="form-control" placeholder="e.g: saffari" name="source" required >
+                <div *ngIf="source.invalid && (source.touched)">
+                
+                  <small *ngIf="source.errors?.required" class="text-danger">sourcename Cannot be null</small>
+                
+                </div>
+                </div>
+      
+  
+              <div class="form-group">
+                  <label style="color: black;">Enter DOB *</label>
+                <input type="date" matinput #cost="ngModel" [(ngModel)]="guest.dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="date1" required >
+                <div *ngIf="cost.invalid && (cost.touched)">
+                
+                  <small *ngIf="cost.errors?.required"class="text-danger">Cannot be null</small>
+                
+                </div>
+                </div>
+                <div class="form-group">
+                  <label style="color: black;">Enter Company*</label>
+                <input  matinput #source2="ngModel" [(ngModel)]="guest.company" class="form-control" placeholder="e.g: Capgemini" name="source2" required >
+                <div *ngIf="source2.invalid && (source2.touched)">
+                
+                  <small *ngIf="source2.errors?.required" class="text-danger">sourcename Cannot be null</small>
+                
+                </div>
+                </div>
+  
+                <div class="form-group">
+                  <label style="color: black;">Enter Address*</label>
+                <input  matinput #source3="ngModel" [(ngModel)]="guest.address" class="form-control" placeholder="e.g: Address" name="source3" required >
+                <div *ngIf="source3.invalid && (source3.touched)">
+                
+                  <small *ngIf="source3.errors?.required" class="text-danger">sourcename Cannot be null</small>
+                
+                </div>
+                </div>   
+                <br>
+              <button class="btn btn-primary col-lg-12" type="submit" [disabled]="!myuser.form.valid">Add Guest</button><br><br>
+            </div>
+           
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>

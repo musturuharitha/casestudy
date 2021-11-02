@@ -1,0 +1,222 @@
+<table class="table">
+    <thead>
+        <tr>
+          <th scope="col">RoomId</th>
+            <th scope="col">GuestId</th>
+            
+            <th scope="col">No Of Adults</th>
+            <th scope="col">Status</th>
+            <th scope="col">CheckIN</th>
+            <th scope="col">CheckOut</th>
+        </tr>
+
+    </thead>
+    <tbody>
+        <tr *ngFor="let reservations of reservationList ">
+          <td>{{reservations.roomId}}</td>
+            <td>{{reservations.guestId}}</td>
+                  
+                  <td>{{reservations.noofadults}}</td> 
+                 <td>{{reservations.status}}</td>  
+                      <td>{{reservations.checkoutdate}}</td>         
+                <td>{{reservations.checkindate}}</td>  
+                  
+                 
+            <td> <button type="button" class="btn btn-primary" (click)="delete(reservation.roomId)">delete</button> </td>
+         
+   <!-- Button trigger modal -->
+   <td><button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Update
+  </button></td>
+
+
+        </tr>
+    </tbody>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+      
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form #myuser="ngForm" (ngSubmit)="display(myuser)" style="padding-bottom: 2em;">
+            <div class="clsform">
+              <h4 class="text-primary" style="padding-bottom: 1em;padding-top: 1em; font-size: x-large;">RESERVATION DETAILS</h4> 
+
+              <div class="form-group">
+
+
+                <label style="color: black;">Enter Room Id *</label>
+              <input  matInput #zname="ngModel" [(ngModel)]="reservation.roomId" class="form-control" placeholder="123" name="zname" required  >
+              <div *ngIf="zname.invalid && (zname.touched)">
+               
+                <small *ngIf="zname.errors?.required" class="text-danger">RoomIdCannot be null</small>
+              </div>
+              </div>
+              <div class="form-group">
+
+
+                <label style="color: black;">Enter Guest Id *</label>
+              <input  matInput #yname="ngModel" [(ngModel)]="reservation.guestId" class="form-control" placeholder="123" name="yname" required  >
+              <div *ngIf="yname.invalid && (yname.touched)">
+               
+                <small *ngIf="yname.errors?.required" class="text-danger">GuesdIdCannot be null</small>
+              </div>
+              </div>
+
+              
+              <div class="form-group">
+                  <label style="color: black;">No Of Childrens*</label>
+                <input  matinput #source="ngModel" [(ngModel)]="reservation.noofchildrens" class="form-control" placeholder="e.g: 1" name="source"  >
+
+                </div>
+
+                <div class="form-group">
+                    <label style="color: black;">No Of Adults*</label>
+                  <input  matinput #sourc="ngModel" [(ngModel)]="reservation.noofadults" class="form-control" placeholder="e.g: 1" name="sourc"  >
+  
+                  </div>
+      
+  
+              <div class="form-group">
+                  <label style="color: black;">Enter CheckIN *</label>
+                <input type="date" matinput #cost="ngModel" [(ngModel)]="reservation.checkindate" class="form-control" placeholder="yyyy-mm-dd" name="date1" required >
+                <div *ngIf="cost.invalid && (cost.touched)">
+                
+                  <small *ngIf="cost.errors?.required"class="text-danger">Cannot be null</small>
+                
+                </div>
+                </div>
+
+                <div class="form-group">
+                    <label style="color: black;">Enter CheckOut*</label>
+                  <input type="date" matinput #lost="ngModel" [(ngModel)]="reservation.checkoutdate" class="form-control" placeholder="yyyy-mm-dd" name="date2" required >
+                  <div *ngIf="lost.invalid && (lost.touched)">
+                  
+                    <small *ngIf="lost.errors?.required"class="text-danger">Cannot be null</small>
+                  
+                  </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label style="color: black;">Enter Status*</label>
+                  <input  matinput #source3="ngModel" [(ngModel)]="reservation.status" class="form-control" placeholder="e.g: Active" name="source3" required >
+                  <div *ngIf="source3.invalid && (source3.touched)">
+                  
+                    <small *ngIf="source3.errors?.required" class="text-danger">sourcename Cannot be null</small>
+                  
+                  </div>
+                  </div>   
+    
+  
+                   
+                <br>
+              <button class="btn btn-primary col-lg-12" type="submit" [disabled]="!myuser.form.valid">Update Reservation</button><br><br>
+            </div>
+           
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<br><br>
+
+    <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Add 
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+      
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form #myuser="ngForm" (ngSubmit)="display(myuser)" style="padding-bottom: 2em;">
+            <div class="clsform">
+              <h4 class="text-primary" style="padding-bottom: 1em;padding-top: 1em; font-size: x-large;">RESERVATION DETAILS</h4> 
+
+              <div class="form-group">
+
+
+                <label style="color: black;">Enter Room Id *</label>
+              <input  matInput #zname="ngModel" [(ngModel)]="reservation.roomId" class="form-control" placeholder="123" name="zname" required  >
+              <div *ngIf="zname.invalid && (zname.touched)">
+               
+                <small *ngIf="zname.errors?.required" class="text-danger">RoomIdCannot be null</small>
+              </div>
+              </div>
+              <div class="form-group">
+
+
+                <label style="color: black;">Enter Guest Id *</label>
+              <input  matInput #yname="ngModel" [(ngModel)]="reservation.guestId" class="form-control" placeholder="123" name="yname" required  >
+              <div *ngIf="yname.invalid && (yname.touched)">
+               
+                <small *ngIf="yname.errors?.required" class="text-danger">GuesdIdCannot be null</small>
+              </div>
+              </div>
+
+              
+              <div class="form-group">
+                  <label style="color: black;">No Of Childrens*</label>
+                <input  matinput #source="ngModel" [(ngModel)]="reservation.noofchildrens" class="form-control" placeholder="e.g: 1" name="source"  >
+
+                </div>
+
+                <div class="form-group">
+                    <label style="color: black;">No Of Adults*</label>
+                  <input  matinput #sourc="ngModel" [(ngModel)]="reservation.noofadults" class="form-control" placeholder="e.g: 1" name="sourc"  >
+  
+                  </div>
+      
+  
+              <div class="form-group">
+                  <label style="color: black;">Enter CheckIN *</label>
+                <input type="date" matinput #cost="ngModel" [(ngModel)]="reservation.checkindate" class="form-control" placeholder="yyyy-mm-dd" name="date1" required >
+                <div *ngIf="cost.invalid && (cost.touched)">
+                
+                  <small *ngIf="cost.errors?.required"class="text-danger">Cannot be null</small>
+                
+                </div>
+                </div>
+
+                <div class="form-group">
+                    <label style="color: black;">Enter CheckOut*</label>
+                  <input type="date" matinput #lost="ngModel" [(ngModel)]="reservation.checkoutdate" class="form-control" placeholder="yyyy-mm-dd" name="date2" required >
+                  <div *ngIf="lost.invalid && (lost.touched)">
+                  
+                    <small *ngIf="lost.errors?.required"class="text-danger">Cannot be null</small>
+                  
+                  </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label style="color: black;">Enter Status*</label>
+                  <input  matinput #source3="ngModel" [(ngModel)]="reservation.status" class="form-control" placeholder="e.g: Active" name="source3" required >
+                  <div *ngIf="source3.invalid && (source3.touched)">
+                  
+                    <small *ngIf="source3.errors?.required" class="text-danger">sourcename Cannot be null</small>
+                  
+                  </div>
+                  </div>   
+    
+  
+                   
+                <br>
+              <button class="btn btn-primary col-lg-12" type="submit" [disabled]="!myuser.form.valid">Add Reservation</button><br><br>
+            </div>
+           
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>

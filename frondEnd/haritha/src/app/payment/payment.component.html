@@ -1,0 +1,101 @@
+<table class="table">
+    <thead>
+        <tr>
+      
+            <th scope="col">RoomId</th><br>
+            <th scope="col">Roomprice</th><br><br>
+            <th scope="col">dayprice</th><br>
+            <th scope="col">nightprice</th>
+
+        </tr>
+
+    </thead>
+
+      <tbody>
+        <tr *ngFor="let rate of  setratesList ">               
+               <td>{{rate.roomId}}</td> 
+               <td>{{rate.totalcost}}</td>
+                <td>{{rate.dayprice}}</td> 
+                <td>{{rate.onenightprice}}</td> 
+        </tr>
+    </tbody>
+                 
+            <!--  <button type="button" class="btn btn-primary" (click)="delete(setrates.Id)">delete</button>
+             <button type="button" class="btn btn-primary">update</button> -->
+            
+       
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Add 
+  </button>
+  
+  
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+          
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form #myuser="ngForm"  style="background: snow;" (ngSubmit)="display(myuser)" style="padding-bottom: 2em;">
+                <div class="clsform">
+                  <h4 class="text-primary" style="padding-bottom: 1em;padding-top: 1em; font-size: x-large;">ADD Payment</h4> 
+    
+                  <div class="form-group">
+    
+    
+    
+                    <label style="color: black;">Enter Guest Id *</label>
+                  <input  matInput #yname="ngModel" [(ngModel)]="payment.guestId" class="form-control" placeholder="123" name="yname" required  >
+                  <div *ngIf="yname.invalid && (yname.touched)">
+                   
+                    <small *ngIf="yname.errors?.required" class="text-danger">GuesdIdCannot be null</small>
+                  </div>
+                  </div>
+    
+                  
+                
+    
+                  <div class="form-group">
+                      <label style="color: black;">Enter Card Details*</label>
+                    <input type="number"  matinput #source1="ngModel" [(ngModel)]="payment.creditcardDetails" class="form-control" placeholder="e.g: 123454" name="source1" required >
+                    <div *ngIf="source1.invalid && (source1.touched)">
+                    
+                      <small *ngIf="source1.errors?.required" class="text-danger">sourcename Cannot be null</small>
+                    
+                    </div>
+                    </div>
+      
+                  <div class="form-group">
+                      <label style="color: black;">Enter Paytime*</label>
+                    <input type="time" matinput #source="ngModel" [(ngModel)]="payment.paytime" class="form-control" placeholder="e.g: saffari" name="source" required >
+                    <div *ngIf="source.invalid && (source.touched)">
+                    
+                      <small *ngIf="source.errors?.required" class="text-danger">time Cannot be null</small>
+                    
+                    </div>
+                    </div>
+          
+      
+      
+                    <div class="form-group">
+                      <label style="color: black;">Enter TotalAmount*</label>
+                    <input  type="number" matinput #source3="ngModel" [(ngModel)]="payment.totalamount" class="form-control" placeholder="e.g: Address" name="source3" required >
+                    <div *ngIf="source3.invalid && (source3.touched)">
+                    
+                      <small *ngIf="source3.errors?.required" class="text-danger">sourcename Cannot be null</small>
+                    
+                    </div>
+                    </div>   
+                    <br>
+                  <button class="btn btn-primary col-lg-12" type="submit" [disabled]="!myuser.form.valid">Add Payment</button><br><br>
+                </div>
+               
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>       
+    
+

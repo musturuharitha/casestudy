@@ -1,0 +1,142 @@
+<!-- <div class="input-group">
+  <div class="form-outline">
+
+    <input type="search"  matinput #source3="ngModel" [(ngModel)]="this.search" class="form-control" placeholder="e.g: Nakuri" name="source3" required > 
+  </div>
+  <button type="button" class="btn btn-primary" (click)="serachfunction()">
+    <i class="fas fa-search"></i>
+  </button>
+</div>
+{{this.search}}
+
+
+
+<div *ngFor="let room of roomList">
+
+  <div class="card" style="width: 18rem;">
+  
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+
+</div> -->
+
+
+<table class="table">
+    <thead>
+        <tr>
+        <br>
+        <th scope="col">RoomId</th><br><br>
+            <th scope="col">Name</th><br>
+            <th scope="col">CheckIN</th><br>
+            <th scope="col">CheckOut</th><br>
+            <th scope="col">Period</th><br>
+
+        </tr>
+
+    </thead>
+
+      <tbody>
+        <tr *ngFor="let room of roomList ">                   
+          <td>{{room.roomId}}</td><br><br>    
+            <td>{{room. guestName}}</td><br>     
+                 <td>{{room.checkout}}</td>         
+                <td>{{room.checkin}}</td> 
+                 <td>{{room.period}}</td> 
+            <td>       
+             <button type="button" class="btn btn-success" data-bs-toggle="modal" (click)="delete(room.roomId)">delete</button></td>
+            <td>    <button type="button" class="btn btn-primary" >update</button>  </td>  
+          
+        </tr>
+    </tbody>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Add Room
+  </button>
+
+
+  
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+      
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form #myuser="ngForm" (ngSubmit)="display(myuser)" style="padding-bottom: 2em;">
+            <div class="clsform">
+              <h4 class="text-primary" style="padding-bottom: 1em;padding-top: 1em; font-size: x-large;">ADD ROOM</h4> 
+
+              <div class="form-group">
+
+
+                <label style="color: black;">Enter Room Id *</label>
+              <input  matInput #yname="ngModel" [(ngModel)]="room.roomId" class="form-control" placeholder="123" name="yname" required  >
+              <div *ngIf="yname.invalid && (yname.touched)">
+               
+                <small *ngIf="yname.errors?.required" class="text-danger">RoomIdCannot be null</small>
+              </div>
+              </div>
+
+              <div class="form-group">
+                <label style="color: black;">Enter Name*</label>
+              <input  matinput #source1="ngModel" [(ngModel)]="room.guestName" class="form-control" placeholder="e.g: John" name="source1" required >
+              <div *ngIf="source1.invalid && (source1.touched)">
+              
+                <small *ngIf="source1.errors?.required" class="text-danger">sourcename Cannot be null</small>
+              
+              </div>
+              </div>
+
+                
+      
+  
+              <div class="form-group">
+                  <label style="color: black;">Enter CheckIN *</label>
+                <input type="date" matinput #cost="ngModel" [(ngModel)]="room.checkin" class="form-control" placeholder="yyyy-mm-dd" name="date1" required >
+                <div *ngIf="cost.invalid && (cost.touched)">
+                
+                  <small *ngIf="cost.errors?.required"class="text-danger">Cannot be null</small>
+                
+                </div>
+                </div>
+
+                <div class="form-group">
+                    <label style="color: black;">Enter CheckOut*</label>
+                  <input type="date" matinput #lost="ngModel" [(ngModel)]="room.checkout" class="form-control" placeholder="yyyy-mm-dd" name="date2" required >
+                  <div *ngIf="lost.invalid && (lost.touched)">
+
+
+
+                   
+                    <small *ngIf="lost.errors?.required"class="text-danger">Cannot be null</small>
+                  
+                  </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label style="color: black;">Period*</label>
+                  <input  matinput #source="ngModel" [(ngModel)]="room.period" class="form-control" placeholder="e.g: 1" name="source"  >
+  
+                  </div>
+              
+  
+                   
+                <br>
+              <button class="btn btn-primary col-lg-12" type="submit" [disabled]="!myuser.form.valid">Add Room</button><br><br>
+            </div>
+           
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  

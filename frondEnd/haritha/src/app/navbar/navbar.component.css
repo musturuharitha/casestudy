@@ -1,0 +1,26 @@
+.bg-cover {
+    background-size: cover !important;
+  }
+ 
+
+
+  h1 {
+    font-size: 40px;
+  }
+
+
+
+
+
+
+
+
+
+
+
+.carousel-caption h1 {
+ 
+  text-align:center;
+  position: relative;
+}
+

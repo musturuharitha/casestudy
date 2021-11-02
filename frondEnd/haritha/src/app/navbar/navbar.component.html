@@ -1,0 +1,260 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand text-warning" href="#"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link disabled"role="button" style="color: white;">About</a>
+        </li> -->
+        <!-- <li class="nav-item">
+          <a class="nav-link disabled"role="button" style="color: white;">Contact</a>
+        </li> -->
+      </ul>
+    </div>
+  </div>
+
+  
+  <div class="dropdown">
+      <a class="btn btn-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+        LOGIN
+      </a>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <li><a class="dropdown-item"  class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal2">RECEPTIONIST</a></li>
+        <li><a class="dropdown-item"  class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal1"> MANAGER</a></li>
+        <li><a class="dropdown-item"  class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">  OWNER </a></li>
+
+       
+      </ul>
+    </div>
+</nav>
+
+
+  <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class=" modal-title" id="exampleModalLabel">OWNER</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <form #myuser="ngForm" (ngSubmit)="display(myuser)" style="padding-bottom: 2em;">
+              <div class="clsform">
+               
+                <h4 class="text-primary" style="padding-bottom: 1em;padding-top: 1em; font-size: x-large;">LOGIN </h4> 
+                 <div class="form-group">
+
+                    <label style="color: black;">Enter Email Address *</label>
+                  <input  matInput #uname="ngModel" [(ngModel)]="this.username" class="form-control" placeholder="xyz@gmail.com" name="uname" required email >
+                  <div *ngIf="uname.invalid && (uname.touched)">
+                    <small *ngIf="uname.errors?.email" class="text-danger">Email should be validate</small>
+                    <small *ngIf="uname.errors?.required" class="text-danger">Email Cannot be null</small>
+                  
+                  </div>
+                </div>
+
+                <div class="form-group">
+
+                  <label style="color: black;">Enter password *</label>
+                <input type="password"  matInput #fname="ngModel" [(ngModel)]="this.password" class="form-control" placeholder="password" name="fname" required >
+                <div *ngIf="fname.invalid && (fname.touched)">
+                  
+                  <small *ngIf="fname.errors?.required" class="text-danger">password Cannot be null</small>
+        
+                </div>
+              </div>
+               </div>
+               <button class="btn btn-primary col-lg-12" type="submit" [disabled]="!myuser.form.valid">LOGIN</button><br><br>
+
+         </form>
+               
+       </div>        
+
+       
+     
+
+  
+  </div>
+
+</div>
+</div>
+
+<!--Modal-->
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class=" modal-title" id="exampleModalLabel">MANAGER</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <form #myuser1="ngForm" (ngSubmit)="display1(myuser1)" style="padding-bottom: 2em;">
+              <div class="clsform">
+               
+                <h4 class="text-primary" style="padding-bottom: 1em;padding-top: 1em; font-size: x-large;">LOGIN</h4> 
+                 <div class="form-group">
+
+                    <label style="color: black;">Enter Email Address *</label>
+                  <input  matInput #yname="ngModel" [(ngModel)]="this.username1" class="form-control" placeholder="xyz@gmail.com" name="yname" required email >
+                  <div *ngIf="yname.invalid && (yname.touched)">
+                    <small *ngIf="yname.errors?.email" class="text-danger">Email should be validate</small>
+                    <small *ngIf="yname.errors?.required" class="text-danger">Email Cannot be null</small>
+                  
+                  </div>
+                </div>
+
+                <div class="form-group">
+
+                  <label style="color: black;">Enter password *</label>
+                <input type="password"  matInput #fyname="ngModel" [(ngModel)]="this.password1" class="form-control" placeholder="password" name="fyname" required >
+                <div *ngIf="fyname.invalid && (fyname.touched)">
+                  
+                  <small *ngIf="fyname.errors?.required" class="text-danger">password Cannot be null</small>
+        
+                </div>
+              </div>
+               </div><br>
+               <button class="btn btn-primary col-lg-12" type="submit" [disabled]="!myuser1.form.valid">LOGIN</button><br><br>
+
+         </form>
+               
+       </div>        
+
+       
+     
+
+  
+  </div>
+
+</div>
+</div>
+
+<!--Modal-->
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class=" modal-title" id="exampleModalLabel">Receptionist</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <form #myuser2="ngForm" (ngSubmit)="display2(myuser2)" style="padding-bottom: 2em;">
+              <div class="clsform">
+               
+                <h4 class="text-primary" style="padding-bottom: 1em;padding-top: 1em; font-size: x-large;">LOGIN</h4> 
+                 <div class="form-group">
+
+                    <label style="color: black;">Enter Email Address *</label>
+                  <input  matInput #uaname="ngModel" [(ngModel)]="this.username2" class="form-control" placeholder="xyz@gmail.com" name="uaname" required email >
+                  <div *ngIf="uaname.invalid && (uaname.touched)">
+                    <small *ngIf="uaname.errors?.email" class="text-danger">Email should be validate</small>
+                    <small *ngIf="uaname.errors?.required" class="text-danger">Email Cannot be null</small>
+                  
+                  </div>
+                </div>
+
+                <div class="form-group">
+
+                  <label style="color: black;">Enter password *</label>
+                <input type="password"  matInput #fsname="ngModel" [(ngModel)]="this.password2" class="form-control" placeholder="password" name="fsname" required >
+                <div *ngIf="fsname.invalid && (fsname.touched)">
+                  
+                  <small *ngIf="fsname.errors?.required" class="text-danger">password Cannot be null</small>
+        
+                </div>
+              </div>
+               </div>
+               <br>
+               <button class="btn btn-primary col-lg-12" type="submit" [disabled]="!myuser2.form.valid">LOGIN</button><br><br>
+
+         </form>
+               
+       </div>        
+
+       
+     
+
+  
+  </div>
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div style="background: url(https://cdn.pixabay.com/photo/2018/08/06/19/49/design-3588214_1280.jpg); height: 500px;" class="page-holder bg-cover">
+
+  <div class="container py-5">
+    <header class="text-center text-blue py-5">
+      <h1 class="display-7 font-weight mb-4 " > <strong  style="color:rgb(35, 161, 56) " >  Welcome to harry </strong>  </h1>
+      <p class="lead mb-0"></p>
+      <p class="font-italic"> Experience the greatest for your holidays </p>
+    
+    </header>
+
+  
+
+  </div>
+</div>
+
+
+<footer class="container" class="bg-dark ">
+  <div >
+      <div class="row">
+          <div class="col-md-4"><span class="copyright  " style="padding-right:10em ;"  style="color: snow;">Copyright&nbsp;©musturuharitha</span></div>
+
+          <div class="col-md-8">
+              <ul class="list-inline quicklinks">
+                  <li class="list-inline-item  "   style="padding-left:45em "><a href="https://www.theiveyshotel.com/privacy-policy">Privacy Policy</a></li>
+                  <li class="list-inline-item"><a href="https://sotetsu-hotels.com/en/pocket-hotel/agreement/">Terms of Use</a></li>
+              </ul>
+          </div>
+      </div>
+  </div>
+</footer>
+

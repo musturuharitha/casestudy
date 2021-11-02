@@ -1,0 +1,34 @@
+<nav id="sidebar" [class.active]="isclass">
+    <div class="sidebar-header">
+        <h4><mat-icon>segment</mat-icon> Services</h4>
+    </div>
+
+    <ul class="list-unstyled components">
+
+
+        <li>
+            <a routerLink="/dashboard/roomlist"> <mat-icon> account_circle </mat-icon> Rooms</a>
+        </li>
+      
+       
+        <li>
+            <a routerLink="/dashboard/guest"><mat-icon> person_add </mat-icon> Guest</a>
+            
+        </li>
+
+        <li class="active">
+            
+            
+            <a routerLink="/dashboard/reservation"> <mat-icon> Reservation </mat-icon> Reservation</a>
+        </li>
+       
+  
+        <li>
+            <a routerLink="/dashboard/payment"><mat-icon> Payment</mat-icon> Payment</a>
+            
+        </li>
+
+        
+    </ul>
+</nav>
+

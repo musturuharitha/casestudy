@@ -1,0 +1,131 @@
+<table class="table">
+    <thead>
+        <tr>
+        <br>
+            <th scope="col"> Name</th><br>
+            <th scope="col">Address</th><br>
+            <th scope="col">Email</th><br>
+            <th scope="col">Salary</th><br>
+            <th scope="col">Assigned</th><br>
+
+        </tr>
+
+    </thead>
+
+      <tbody>
+        <tr *ngFor="let Staff of StaffList ">                   
+         
+            <td>{{Staff. employeename}}</td><br>     
+                 <td>{{Staff.employeeaddress}}</td>         
+                <td>{{Staff.email}}</td> 
+                 <td>{{Staff.salary}}</td> 
+             <td>{{Staff.occupation}}</td> 
+             <button type="button" class="btn btn-primary" (click)="delete(staff.code)">delete</button>
+        </tr>
+    </tbody>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Add Staff
+  </button>
+  
+</table>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+          
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form #myuser="ngForm" (ngSubmit)="display(myuser)" style="padding-bottom: 2em;">
+                <div class="clsform">
+                  <h4 class="text-primary" style="padding-bottom: 1em;padding-top: 1em; font-size: x-large;">STAFF DETAILS</h4> 
+    
+                  <div class="form-group">
+    
+    
+                    <label style="color: black;">Enter  Id *</label>
+                  <input  matInput #yname="ngModel" [(ngModel)]="staff.code" class="form-control" placeholder="123" name="yname" required  >
+                  <div *ngIf="yname.invalid && (yname.touched)">
+                   
+                    <small *ngIf="yname.errors?.required" class="text-danger">GuesdIdCannot be null</small>
+                  </div>
+                  </div>
+ 
+  
+
+    
+  
+                <div class="form-group">
+                    <label style="color: black;">Enter Name*</label>
+                  <input  matinput #source1="ngModel" [(ngModel)]="staff.employeename" class="form-control" placeholder="e.g: John" name="source1" required >
+                  <div *ngIf="source1.invalid && (source1.touched)">
+                  
+                    <small *ngIf="source1.errors?.required" class="text-danger">sourcename Cannot be null</small>
+                  
+                  </div>
+                  </div>
+
+                  
+                  
+                 <div class="form-group">
+                    <label style="color: black;">Enter Email Address *</label>
+                  <input  matInput #uname="ngModel" [(ngModel)]="staff.email" class="form-control" placeholder="xyz@gmail.com" name="uname" required email >
+                  <div *ngIf="uname.invalid && (uname.touched)">
+                    <small *ngIf="uname.errors?.email" class="text-danger">Email should be validate</small>
+                    <small *ngIf="uname.errors?.required" class="text-danger">Email Cannot be null</small>
+                  
+                  </div>
+                </div>
+
+
+                  <div class="form-group">
+                    <label style="color: black;">Enter Age*</label>
+                  <input  matinput #sourc="ngModel" [(ngModel)]="staff.age" class="form-control" placeholder="e.g: 1" name="sourc"  >
+  
+                  </div>
+
+
+                  
+                <div class="form-group">
+                    <label style="color: black;">Enter Salary*</label>
+                  <input  matinput #sourc="ngModel" [(ngModel)]="staff.salary" class="form-control" placeholder="e.g: 1" name="sourc"  >
+  
+                  </div>
+
+
+                  <div class="form-group">
+                    <label style="color: black;">Enter Address*</label>
+                  <input  matinput #source3="ngModel" [(ngModel)]="staff.employeeaddress" class="form-control" placeholder="e.g: Address" name="source3" required >
+                  <div *ngIf="source3.invalid && (source3.touched)">
+                  
+                    <small *ngIf="source3.errors?.required" class="text-danger">sourcename Cannot be null</small>
+                  
+                  </div>
+                  </div> 
+
+
+                  <div class="form-group">
+                    <label style="color: black;">Enter Occupation*</label>
+                  <input  matinput #source3="ngModel" [(ngModel)]="staff.occupation" class="form-control" placeholder="e.g: Address" name="source3" required >
+                  <div *ngIf="source3.invalid && (source3.touched)">
+                  
+                    <small *ngIf="source3.errors?.required" class="text-danger">sourcename Cannot be null</small>
+                  
+                  </div>
+                  </div> 
+                  <br>
+                  <button class="btn btn-primary col-lg-12" type="submit" [disabled]="!myuser.form.valid">Add Staff</button><br><br>
+                </div>
+               
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
